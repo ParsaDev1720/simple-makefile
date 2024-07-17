@@ -1,13 +1,12 @@
 APP := my-app
 
 CC      := g++
-SRC_FMT := cpp # Source file format like cpp, cxx, cc and ...
-CFLAGS  := -g -O0
-LDFLAGS := # Linker Flags
+SRC_FMT := cc
+CFLAGS  := -O0 -g
+LDFLAGS := -lm
 
-SRC_DIRS := src_directory_1
-SRC_DIRS += src_directory_2
-SRC_DIRS += outter_src_directory/inner_src_directory
+SRC_DIRS := src
+SRC_DIRS += src/inner_src
 
 SRCS := $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.$(SRC_FMT)))
 OBJS := $(patsubst %.$(SRC_FMT),bin/%.o,$(SRCS))
